@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import eurUsdMomentumChart from './assets/eurusd-momentum-chart.svg';
 
 const navItems = [
   { label: 'Features', href: '#features' },
@@ -55,7 +56,7 @@ const steps = [
 const stats = [
   { value: '100+', label: 'learners' },
   { value: '4', label: 'core learning paths' },
-  { value: 'Beginner-friendly', label: 'platform' },
+  { value: 'Beginner-friendly', label: 'platform', variant: 'text' },
 ];
 
 const trustPoints = [
@@ -173,11 +174,11 @@ function DashboardPreview() {
             <strong>82%</strong>
           </div>
           <div className="chart-visual">
-            <span className="chart-line chart-line-one" />
-            <span className="chart-line chart-line-two" />
-            <span className="chart-dot chart-dot-one" />
-            <span className="chart-dot chart-dot-two" />
-            <span className="chart-dot chart-dot-three" />
+            <img
+              className="chart-screenshot"
+              src={eurUsdMomentumChart}
+              alt="EUR/USD candlestick chart with entry, stop, and target zone"
+            />
           </div>
           <div className="chart-metrics">
             <div>
@@ -348,7 +349,10 @@ export default function App() {
           <div className="trust-panel">
             <div className="stats-grid">
               {stats.map((stat) => (
-                <article key={stat.label} className="stat-card">
+                <article
+                  key={stat.label}
+                  className={`stat-card${stat.variant ? ` stat-card-${stat.variant}` : ''}`}
+                >
                   <strong>{stat.value}</strong>
                   <span>{stat.label}</span>
                 </article>
@@ -409,3 +413,4 @@ export default function App() {
     </div>
   );
 }
+
